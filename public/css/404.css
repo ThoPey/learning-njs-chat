@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  background-color: #e2e2e2;
+  text-align: center;
+}
+
+h1 {
+  color: mediumvioletred;
+  font-size: 5em;
+  position: relative;
+}
+
+h1 > div {
+  font-size: 0.6em;
+}

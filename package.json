@@ -19,5 +19,10 @@
     "url": "https://github.com/ThoPey/learning-njs-chat/issues"
   },
   "homepage": "https://github.com/ThoPey/learning-njs-chat#readme",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1"
+  }
 }

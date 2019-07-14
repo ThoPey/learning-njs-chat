@@ -1,0 +1,9 @@
+{
+  "verbose": true,
+  "ext": "js, html, css",
+  "watch": [
+    "index.js",
+    "public/",
+    "views/"
+  ]
+}
