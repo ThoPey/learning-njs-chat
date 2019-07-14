@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+/* General rules */
+
+:root {
+  --main-background-color: #222;
+  --write-background-color: #333;
+  --main-color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ************ */
+
+body {
+  margin: 0;
+  background-color:var(--main-background-color);
+  color: var(--main-color);
+}
+
+form {
+  background-color: var(--write-background-color);
+  bottom: 0;
+  padding: 2em;
+  position: fixed;
+  width: 100%;
+}
+
+form div {
+  align-items: center;
+  background-color: white;
+  border-radius: 100px;
+  display: flex;
+  /* Display button right */
+  justify-content: space-between;
+  padding: 1em;
+}
+
+form * {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+form input {
+  border: none;
+  font-size: 1.2em;
+  /* Allow button to stay in div when width is very low */
+  min-width: 0px;
+  width: 100%;
+}
+
+form button {
+  border: none;
+  font-size: 2em;
+  padding: 0;
+}

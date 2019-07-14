@@ -9,8 +9,8 @@ app.use(function (res, res, next) {
   res.setHeader("Content-Type", "text/html");
   return next();
 })
-.all("/", function (res, req, next) {
-  return next(); // For now. Has to be replaced
+.all("/", function (req, res) {
+  res.render("index.ejs");
 })
 .use(function(req, res) {
   res.status("404");
