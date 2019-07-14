@@ -1,0 +1,98 @@
+@charset "utf-8";
+
+/* General rules */
+
+:root {
+  --main-bg-color: #222;
+  --received-bg-color: #990217;
+  --sent-bg-color: #088e79;
+  --write-bg-color: #333;
+  --main-color: #fff;
+  --author-border-color: #ffebeb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ************ */
+
+body {
+  margin: 0;
+  background-color:var(--main-bg-color);
+  color: var(--main-color);
+}
+
+/* Messages */
+
+.message {
+  border-radius: 20px;
+  /* Prevent long messages from triggering horizontal scroll */
+  margin: 1em 0 1em 3%;
+  max-width: 90%;
+  padding: 0.4em 1em 0.6em;
+  width: max-content;
+}
+
+.received {
+  background-color: var(--received-bg-color);
+}
+
+.sent {
+  background-color: var(--sent-bg-color);
+}
+
+.message div:first-child {
+  --border-spacing: 0.8em;
+  border-bottom: 2px dashed var(--author-border-color);
+  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+  margin-bottom: var(--border-spacing);
+  padding-bottom: var(--border-spacing);
+  width: max-content;
+}
+
+.message div:last-child {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Send message footer */
+
+form {
+  background-color: var(--write-bg-color);
+  bottom: 0;
+  padding: 2em;
+  position: fixed;
+  width: 100%;
+}
+
+form div {
+  align-items: center;
+  background-color: white;
+  border-radius: 100px;
+  display: flex;
+  /* Display button right */
+  justify-content: space-between;
+  padding: 1em;
+}
+
+form * {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+form input {
+  border: none;
+  font-size: 1.2em;
+  /* Allow button to stay in div when width is very low */
+  min-width: 0px;
+  width: 100%;
+}
+
+form button {
+  border: none;
+  font-size: 2em;
+  padding: 0;
+}
