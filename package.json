@@ -1,0 +1,23 @@
+{
+  "name": "learning-njs-chat",
+  "version": "0.0.0",
+  "description": "Learning Project : Chat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThoPey/learning-njs-chat.git"
+  },
+  "keywords": [
+    "learning",
+    "chat"
+  ],
+  "author": "ThoPey (https://github.com/ThoPey)",
+  "bugs": {
+    "url": "https://github.com/ThoPey/learning-njs-chat/issues"
+  },
+  "homepage": "https://github.com/ThoPey/learning-njs-chat#readme",
+  "license": "ISC"
+}
