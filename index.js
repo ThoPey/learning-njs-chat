@@ -1,9 +1,15 @@
+const socketServer = require('./public/js/socket-server');
+
+const port    = 8080;
 const express = require('express');
 
-const app  = express();
-const port = 8080;
+const app     = express();
+const server  = require('http').createServer(app);
+const io      = require('socket.io')(server);
 
 app.use(express.static(__dirname + "/public/"));
+
+io.on('connection', socketServer.clientConnection);
 
 app.use(function (res, res, next) {
   res.setHeader("Content-Type", "text/html");
@@ -17,4 +23,4 @@ app.use(function (res, res, next) {
   res.render("404.ejs");
 });
 
-app.listen(port);
+server.listen(port);

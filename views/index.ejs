@@ -1,4 +1,4 @@
-<%- include('page_start.html') %>
+<%- include('page_head.html') %>
   <link rel="stylesheet" type="text/css" href="/css/messages.css">
 </head>
 <body>
@@ -24,6 +24,9 @@
 --><button type="button" title="Send message">&#8669;</button>
   </div>
 </form>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/socket-client.js"></script>
 
 </body>
 </html>
