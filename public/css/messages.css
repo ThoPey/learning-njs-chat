@@ -22,19 +22,28 @@ button {
 /* ************ */
 
 body {
-  margin: 0;
   background-color:var(--main-bg-color);
   color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+}
+
+main {
+  /* Make main part stand alone with scroll */
+  flex: 1;
+  overflow: auto;
 }
 
 /* Messages */
 
 .message {
   border-radius: 20px;
-  /* Prevent long messages from triggering horizontal scroll */
   margin: 1em 0 1em 3%;
   max-width: 90%;
   padding: 0.4em 1em 0.6em;
+  /* Prevent long messages from triggering horizontal scroll */
   width: max-content;
 }
 
@@ -63,9 +72,7 @@ body {
 
 form {
   background-color: var(--write-bg-color);
-  bottom: 0;
   padding: 2em;
-  position: fixed;
   width: 100%;
 }
 
@@ -87,7 +94,7 @@ form input {
   border: none;
   font-size: 1.2em;
   /* Allow button to stay in div when width is very low */
-  min-width: 0px;
+  min-width: 0;
   width: 100%;
 }
 

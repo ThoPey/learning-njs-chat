@@ -11,5 +11,5 @@ https://openclassrooms.com/fr/courses/1056721-des-applications-ultra-rapides-ave
 
 1. Download or fork project
 2. Install all node modules : `npm install`
-2. Launch Node.js : `nodemon app.js`
+2. Launch Node.js : `nodemon index.js`
 3. Open browser 'http://localhost:8080'
