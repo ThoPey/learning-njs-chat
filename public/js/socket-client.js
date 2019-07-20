@@ -2,6 +2,8 @@
 
 const socket = io.connect('http://localhost:8080');
 
+/*** Functions ***/
+
 // Returns a HTML element
 function createMessage(author, message, fromMe = false) {
   let container = document.createElement("div");
@@ -18,3 +20,10 @@ function createMessage(author, message, fromMe = false) {
 function appendMessage(message) {
   document.querySelector("main").appendChild(message);
 }
+
+/*** Events ***/
+
+document.getElementsByName("send-form")[0].addEventListener("submit", function(evt) {
+  evt.preventDefault(); // Prevent changing page when submitting message
+  appendMessage( createMessage("Unknow", evt.target[0].value, true) );
+});
