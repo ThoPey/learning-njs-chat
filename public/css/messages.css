@@ -30,15 +30,35 @@ body {
   margin: 0;
 }
 
+main {
+  /* Make main part stand alone with scroll */
+  flex: 1;
+  overflow: auto;
+}
+
+/* Header */
+
 header {
   background-color: var(--header-bg-color);
   text-align: center;
 }
 
-main {
-  /* Make main part stand alone with scroll */
-  flex: 1;
-  overflow: auto;
+header > * {
+  font-size: 2em;
+}
+
+header > h1 {
+  display: inline-block;
+}
+
+header > a {
+  color: inherit;
+  margin-left: 1ch;
+  text-decoration: none;
+}
+
+header > a:hover {
+  color: red;
 }
 
 /* Messages */
