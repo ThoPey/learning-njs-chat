@@ -25,7 +25,9 @@ function appendMessage(message) {
 
 document.getElementsByName("send-form")[0].addEventListener("submit", function(evt) {
   evt.preventDefault(); // Prevent changing page when submitting message
+  const author = document.querySelector("header h1").innerHTML;
   const messageText = evt.target[0].value;
   if (messageText !== "")
-    appendMessage( createMessage("Unknow", messageText, true) );
+    appendMessage( createMessage(author, messageText, true) );
+  evt.target[0].value = "";
 });
