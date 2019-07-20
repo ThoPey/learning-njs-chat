@@ -25,5 +25,7 @@ function appendMessage(message) {
 
 document.getElementsByName("send-form")[0].addEventListener("submit", function(evt) {
   evt.preventDefault(); // Prevent changing page when submitting message
-  appendMessage( createMessage("Unknow", evt.target[0].value, true) );
+  const messageText = evt.target[0].value;
+  if (messageText !== "")
+    appendMessage( createMessage("Unknow", messageText, true) );
 });

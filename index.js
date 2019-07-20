@@ -15,10 +15,13 @@ app.use(function (res, res, next) {
   res.setHeader("Content-Type", "text/html");
   return next();
 })
-.all("/", function (req, res) {
-  res.render("index.ejs");
+.get("/enter", function(req, res) {
+  res.render("index.ejs", { username: req.query.username } );
 })
-.use(function(req, res) {
+.all("/", function(req, res) {
+  res.render("connect.ejs");
+})
+.use(function (req, res) {
   res.status(404);
   res.render("404.ejs");
 });

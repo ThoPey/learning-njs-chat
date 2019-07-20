@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+:root {
+  --main-color: #fff;
+  --main-bg-color: #222;
+}
+
+body {
+  background-color:var(--main-bg-color);
+  color: var(--main-color);
+}
