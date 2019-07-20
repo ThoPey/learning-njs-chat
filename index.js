@@ -19,7 +19,7 @@ app.use(function (res, res, next) {
   res.render("index.ejs");
 })
 .use(function(req, res) {
-  res.status("404");
+  res.status(404);
   res.render("404.ejs");
 });
 

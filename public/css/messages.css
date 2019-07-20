@@ -93,7 +93,7 @@ form * {
 form input {
   border: none;
   font-size: 1.2em;
-  /* Allow button to stay in div when width is very low */
+  /* Allow button to stay in div when viewport width is very low */
   min-width: 0;
   width: 100%;
 }
