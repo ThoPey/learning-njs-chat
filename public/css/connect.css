@@ -1,6 +1,10 @@
 @charset "utf-8";
 @import url("colors.css");
 
+button {
+  cursor: pointer;
+}
+
 form {
   align-items: center;
   display: flex;

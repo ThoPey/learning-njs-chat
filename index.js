@@ -11,8 +11,12 @@ const io      = require('socket.io')(server);
 app.use(express.static(__dirname + "/public/"));
 
 io.on('connection', client => {
-  socketServer.clientConnection(client, io, url);
+  const username = socketServer.getUsername(client, url);
+
   client.on('message', data => socketServer.sendMessage(io, data) );
+  client.on('disconnect', () => socketServer.clientDisconnection(io, username));
+
+  socketServer.clientConnection(io, username);
 });
 
 app.use(function (res, res, next) {

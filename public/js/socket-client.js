@@ -21,13 +21,14 @@ function createMessage(author, message, fromMe = false) {
 }
 
 // Returns a HTML element
-function createConnectionMessage(author) {
+function createConnectionMessage(author, connection = true) {
   let container = document.createElement("div");
   container.classList.add("message");
   container.appendChild( document.createElement("span"));
   container.classList.add("message");
   container.classList.add("connection");
-  container.children[0].innerText = author + " has arrived !";
+  const message = author + (connection ? " has arrived !" : " has left !");
+  container.children[0].innerText = message;
   return container;
 }
 
@@ -42,8 +43,8 @@ function newMessage(author, text, fromMe = false) {
   appendMessage( createMessage(author, text, fromMe) );
 }
 
-function newConnectionMessage(author) {
-  appendMessage( createConnectionMessage(author) );
+function newConnectionMessage(author, connection = true) {
+  appendMessage( createConnectionMessage(author, connection) );
 }
 
 /*** Events ***/
@@ -74,6 +75,10 @@ socket.on('broadcast', data => {
     switch (data.type) {
       case 'connection': {
         newConnectionMessage(data.author);
+        break;
+      }
+      case 'disconnection': {
+        newConnectionMessage(data.author, false);
         break;
       }
       case 'message': {
