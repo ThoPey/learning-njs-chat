@@ -20,6 +20,17 @@ function createMessage(author, message, fromMe = false) {
   return container;
 }
 
+// Returns a HTML element
+function createConnectionMessage(author) {
+  let container = document.createElement("div");
+  container.classList.add("message");
+  container.appendChild( document.createElement("span"));
+  container.classList.add("message");
+  container.classList.add("connection");
+  container.children[0].innerText = author + " has arrived !";
+  return container;
+}
+
 // message : HTML DOM object
 function appendMessage(message) {
   document.querySelector("main").appendChild(message);
@@ -29,6 +40,10 @@ function appendMessage(message) {
 
 function newMessage(author, text, fromMe = false) {
   appendMessage( createMessage(author, text, fromMe) );
+}
+
+function newConnectionMessage(author) {
+  appendMessage( createConnectionMessage(author) );
 }
 
 /*** Events ***/
@@ -44,17 +59,30 @@ document.getElementsByName("send-form")[0].addEventListener("submit", function(e
     evt.target[0].value = "";
 
     // Send message to other users
-    socket.emit("message", { type: 'message', author: author, text: messageText });
+    const data = {
+      type: 'message',
+      author: author,
+      text: messageText
+    };
+    socket.emit("message", data);
   }
 
 });
 
 socket.on('broadcast', data => {
-  if (
-    data.hasOwnProperty('type') &&
-    data.type === 'message' &&
-    data.author !== getSelfName()
-  ) {
-    newMessage(data.author, data.text);
+  if (data.hasOwnProperty('type')) {
+    switch (data.type) {
+      case 'connection': {
+        newConnectionMessage(data.author);
+        break;
+      }
+      case 'message': {
+        if (data.author !== getSelfName())
+          newMessage(data.author, data.text);
+        break;
+      }
+      default:
+        break;
+    }
   }
 });

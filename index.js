@@ -1,4 +1,5 @@
 const socketServer = require('./public/js/socket-server');
+const url = require('url');
 
 const port    = 8080;
 const express = require('express');
@@ -10,7 +11,7 @@ const io      = require('socket.io')(server);
 app.use(express.static(__dirname + "/public/"));
 
 io.on('connection', client => {
-  socketServer.clientConnection();
+  socketServer.clientConnection(client, io, url);
   client.on('message', data => socketServer.sendMessage(io, data) );
 });
 

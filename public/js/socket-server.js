@@ -5,8 +5,14 @@ module.exports = {
   sendMessage: sendMessage
 };
 
-function clientConnection() {
-  console.log("Socket connection event triggered");
+function clientConnection(client, socket, url) {
+  const urlstring = client.handshake.headers.referer;
+  const username = url.parse(urlstring, true).query.username;
+  const data = {
+    type: "connection",
+    author: username
+  }
+  sendMessage(socket, data);
 }
 
 function sendMessage(socket, data) {

@@ -6,6 +6,7 @@
 :root {
   --header-bg-color: #1c7905;
   
+  --connection-bg-color: #555;
   --received-bg-color: #990217;
   --sent-bg-color: #088e79;
   --author-border-color: #ffebeb;
@@ -70,6 +71,11 @@ header > a:hover {
   padding: 0.4em 1em 0.6em;
   /* Prevent long messages from triggering horizontal scroll */
   width: max-content;
+}
+
+.connection {
+  background-color: var(--connection-bg-color);
+  font-style: italic;
 }
 
 .received {
