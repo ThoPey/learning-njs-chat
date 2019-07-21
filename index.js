@@ -9,7 +9,10 @@ const io      = require('socket.io')(server);
 
 app.use(express.static(__dirname + "/public/"));
 
-io.on('connection', socketServer.clientConnection);
+io.on('connection', client => {
+  socketServer.clientConnection();
+  client.on('message', data => socketServer.sendMessage(io, data) );
+});
 
 app.use(function (res, res, next) {
   res.setHeader("Content-Type", "text/html");

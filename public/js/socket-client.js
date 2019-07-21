@@ -4,6 +4,10 @@ const socket = io.connect('http://localhost:8080');
 
 /*** Functions ***/
 
+function getSelfName() {
+  return document.querySelector("header h1").innerHTML;
+}
+
 // Returns a HTML element
 function createMessage(author, message, fromMe = false) {
   let container = document.createElement("div");
@@ -23,13 +27,34 @@ function appendMessage(message) {
   messagesElement.scrollTop = messagesElement.scrollHeight;
 }
 
+function newMessage(author, text, fromMe = false) {
+  appendMessage( createMessage(author, text, fromMe) );
+}
+
 /*** Events ***/
 
 document.getElementsByName("send-form")[0].addEventListener("submit", function(evt) {
   evt.preventDefault(); // Prevent changing page when submitting message
-  const author = document.querySelector("header h1").innerHTML;
+  const author = getSelfName();
   const messageText = evt.target[0].value;
-  if (messageText !== "")
-    appendMessage( createMessage(author, messageText, true) );
-  evt.target[0].value = "";
+
+  // Write message to self's screen
+  if (messageText !== "") {
+    newMessage(author, messageText, true);
+    evt.target[0].value = "";
+
+    // Send message to other users
+    socket.emit("message", { type: 'message', author: author, text: messageText });
+  }
+
+});
+
+socket.on('broadcast', data => {
+  if (
+    data.hasOwnProperty('type') &&
+    data.type === 'message' &&
+    data.author !== getSelfName()
+  ) {
+    newMessage(data.author, data.text);
+  }
 });
