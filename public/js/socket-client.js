@@ -19,6 +19,8 @@ function createMessage(author, message, fromMe = false) {
 // message : HTML DOM object
 function appendMessage(message) {
   document.querySelector("main").appendChild(message);
+  const messagesElement = document.querySelector("main");
+  messagesElement.scrollTop = messagesElement.scrollHeight;
 }
 
 /*** Events ***/
