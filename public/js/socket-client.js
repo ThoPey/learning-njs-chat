@@ -11,8 +11,8 @@ function createMessage(author, message, fromMe = false) {
   container.classList.add( fromMe ? "sent" : "received" );
   container.appendChild( document.createElement("div") );
   container.appendChild( document.createElement("div") );
-  container.children[0].innerHTML = author;
-  container.children[1].innerHTML = message;
+  container.children[0].innerText = author;
+  container.children[1].innerText = message;
   return container;
 }
 
